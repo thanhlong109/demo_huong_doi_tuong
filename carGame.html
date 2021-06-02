@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+</head>
+<body>
+    <div id="game">
+        <img src="Car_Green_Front.png" id="car1" style="width: 20px;">
+    </div>
+    <script>
+        class Car{
+            id;
+            speed;
+            direction;
+            y=0;
+            x;
+            constructor(i,s,d,c,xx){
+                this.id=i;
+                this.speed=s;
+                this.direction=d;
+                this.x = xx;
+            }
+            move(){
+                if(this.direction==="down"){
+                    this.y=0;
+                    document.getElementById(this.id).style["left"]=this.x + "px";
+                    this.display("block");
+                    setInterval(function(){
+                        if((this.y+this.speed)<Game.maxTop){
+                            this.y += this.speed;
+                            document.getElementById(this.id).style["top"]=this.y + "px";
+                            console.log("dang xuong"+this.y);
+                        }else {
+                            this.display("none");
+                        }
+                    },200);  
+                }else if(this.direction==="up"){
+                    this.y=Game.maxTop;
+                    document.getElementById(this.id).style["left"]=this.x + "px";
+                    this.display("block");
+                    setInterval(function(){
+                        if((this.y-this.speed)>0){
+                            this.y-=this.speed;
+                            document.getElementById(this.id).style["top"]=this.y +"px";
+                            console.log("danglên"+this.y);
+                        }else {
+                            this.display("none");
+                        }
+                    })
+                }
+            }
+            display(display_status){// báo lỗi chỗ này không phải là 1 hàm
+                document.getElementById(this.id).style.display=display_status;
+            }
+        }
+
+        let car1= new Car("car1",10,"down",10);
+        car1.move();
+       class Game{
+           maxTop=1000;
+           maxleft=500;
+            start(){
+                
+            }
+            pause(){
+
+            }
+            continue(){
+
+            }
+            end(){
+
+            }
+       }
+    </script>
+</body>
+</html>
